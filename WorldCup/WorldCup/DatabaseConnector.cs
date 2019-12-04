@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows;
 
 namespace WorldCup
 {
@@ -28,7 +29,7 @@ namespace WorldCup
             connection.ConnectionString = path_connection;
         }
         public SqlConnection makeConnection(String flag) {
-            
+
 
             if (flag == "open")
             {
@@ -46,7 +47,7 @@ namespace WorldCup
             connection.Close();
         }
         public void makeQueryByTeem(String Query, int ContinnentArea) {
-            SqlCommand command = new SqlCommand(Query+" where team = "+ ContinnentArea.ToString(), makeConnection("open"));
+            SqlCommand command = new SqlCommand(Query + " where team = " + ContinnentArea.ToString(), makeConnection("open"));
             SqlDataReader reader = command.ExecuteReader();
             Console.WriteLine("Did come to here");
             while (reader.Read())
@@ -61,6 +62,35 @@ namespace WorldCup
 
         }
 
+        public string _ClearTable(String TableToFlash)
+        {
+
+            // Test for input
+            if (TableToFlash == "player" || TableToFlash == "teem" || TableToFlash == "region")
+            {
+                return "No premission";
+            }
+            else
+            {
+                try
+                {
+                    SqlCommand command = new SqlCommand("Delete from " + TableToFlash, makeConnection("open"));
+                    command.ExecuteNonQuery();
+                    command.Dispose();
+                    closeConnection(makeConnection("close"));
+                    return "Sussesfully flash table : " + TableToFlash;
+                }
+                catch (Exception e)
+                {
+                    //MessageBox.Show(e.Message);
+                    return e.Message.Contains("Invalid") ? "Somethings wrong check connection":"Table not found"
+                        ;
+                }
+            }
+
+
+        }
+
         //public List<String> getPlayer(String Query)
         //{
         //    List<String> tempReturn = new List<string>();
@@ -71,7 +101,6 @@ namespace WorldCup
         //    SqlCommand command = new SqlCommand(Query,connection1);
         //    return tempReturn;
         //}
-
 
     }
 }

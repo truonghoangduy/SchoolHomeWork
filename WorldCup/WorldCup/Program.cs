@@ -23,9 +23,9 @@ namespace WorldCup
             teemEnter.printall();
             //Match match = new Match();
 
-
-
-            //Console.ReadLine();
+            Console.WriteLine(database._ClearTable("aaaa"))
+;
+            Console.ReadLine();
 
             //Area test = new Area();
             //test.radomArea(Continent.Asia);
@@ -35,7 +35,7 @@ namespace WorldCup
             //test.printall();
             //Console.ReadLine();
 
-            
+
 
 
 
