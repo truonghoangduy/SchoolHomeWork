@@ -11,7 +11,7 @@ namespace WorldCup
         public List<Player> listOfPlayer = new List<Player>();
         public int teemindexing { set; get; }
 
-        public int AreCode { set; get; }
+        public int ContinentCode { set; get; }
         public int TeemTotalSroce { set; get; }
         public void AddplayerToTeem(String Name)
         {
@@ -24,7 +24,7 @@ namespace WorldCup
             // Player name and their personalGoal
             foreach (var item in listOfPlayer)
             {
-                Console.WriteLine(item.playerName +"  "+item._Pesonalsroce);
+                Console.WriteLine(item.playerName +"  "+item._Pesonalsroce +"  ");
             }
         }
 

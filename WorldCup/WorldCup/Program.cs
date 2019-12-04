@@ -12,11 +12,16 @@ namespace WorldCup
         {
             //Player Induvitual = new Player("duy");
             //Console.WriteLine(Induvitual.playerName + Induvitual._Pesonalsroce.ToString());
-            ////Console.ReadLine();
-            //DatabaseConnector database = new DatabaseConnector();
-            ////String Querydata = @'SELECT * FROM player';
-            //database.makeQuery("Select name From player");
+            //Console.ReadLine();
+            DatabaseConnector database = new DatabaseConnector();
+            //String Querydata = @'SELECT * FROM player';
+            database.makeQuery("Select name From player");
 
+            Teem teemEnter = new Teem();
+
+            Match match = new Match();
+
+            match.TeemA = teemEnter.listOfPlayer.Where<>
 
             //Console.ReadLine();
 
