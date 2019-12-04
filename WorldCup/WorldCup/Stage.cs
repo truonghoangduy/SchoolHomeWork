@@ -6,25 +6,25 @@ using System.Threading.Tasks;
 
 namespace WorldCup
 {
-    class Stage
+    public class Stage
     {
         List<Teem> teems = new List<Teem>();
-        public bool InitcheckTeem()
-        {
-            bool checkfag=false;
-            foreach (var item in teems)
-            {
-                if (item.listOfPlayer.Count>7 || item.listOfPlayer.Count <15)
-                {
-                    checkfag = true;
-                }
-                if (true)
-                {
+        //public bool InitcheckTeem()
+        //{
+        //    bool checkfag=false;
+        //    foreach (var item in teems)
+        //    {
+        //        if (item.listOfPlayer.Count>7 || item.listOfPlayer.Count <15)
+        //        {
+        //            checkfag = true;
+        //        }
+        //        if (true)
+        //        {
 
-                }
-            }
-            return checkfag;
-        }
+        //        }
+        //    }
+        //    return checkfag;
+        //}
 
     }
 }

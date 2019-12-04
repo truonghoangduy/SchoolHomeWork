@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WorldCup
 {
-    class Player
+    public class Player
     {
         public String playerName;
         public int _Pesonalsroce;

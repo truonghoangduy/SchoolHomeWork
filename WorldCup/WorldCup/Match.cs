@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WorldCup
 {
-    class Match
+    public class Match
     {
         // Match bettwen 2 teem
         public Teem TeemA { set; get; }

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace WorldCup
 {
-    class Teem
+    public class Teem
     {
         public List<Player> listOfPlayer = new List<Player>();
         public int teemindexing { set; get; }
-
+        public String Coach { get; set; }
         public int ContinentCode { set; get; }
         public int TeemTotalSroce { set; get; }
         public void AddplayerToTeem(String Name)

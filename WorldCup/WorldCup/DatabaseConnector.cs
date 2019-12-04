@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace WorldCup
 {
-    class DatabaseConnector
+    public class DatabaseConnector
     {
         private String path_connection
         {
@@ -45,8 +45,8 @@ namespace WorldCup
         {
             connection.Close();
         }
-        public void makeQuery(String Query) {
-            SqlCommand command = new SqlCommand(Query, makeConnection("open"));
+        public void makeQueryByTeem(String Query, int ContinnentArea) {
+            SqlCommand command = new SqlCommand(Query+" where team = "+ ContinnentArea.ToString(), makeConnection("open"));
             SqlDataReader reader = command.ExecuteReader();
             Console.WriteLine("Did come to here");
             while (reader.Read())
@@ -54,6 +54,7 @@ namespace WorldCup
                 //String data = reader["name"].ToString();
                 //Console.WriteLine(reader["name"].ToString() + reader["name"].GetType());
                 teem.AddplayerToTeem(reader["name"].ToString());
+                teem.ContinentCode = ContinnentArea;
                 //Console.WriteLine(reader["name"].ToString().GetType());
             }
             closeConnection(makeConnection("close"));

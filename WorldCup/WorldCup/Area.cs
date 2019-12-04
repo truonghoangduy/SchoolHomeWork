@@ -16,7 +16,7 @@ namespace WorldCup
         Europe,
         Host
     }
-    class Area
+    public class Area
     {
         Teem teem = new Teem();
         Random random = new Random();
@@ -33,18 +33,19 @@ namespace WorldCup
                 {
                     AsignedTeem.Add(AsignContinent);
                     totalTeemHasContinent -= 1;
-                    
-                }else if (AsignedTeem.Contains(AsignContinent))
+
+                }
+                else if (AsignedTeem.Contains(AsignContinent))
                 {
                     continue;
-                    
+
                 }
                 else
                 {
                     AsignedTeem.Add(AsignContinent);
                     totalTeemHasContinent -= 1;
                 }
-                
+
             }
         }
 
@@ -57,7 +58,7 @@ namespace WorldCup
         }
 
 
-        public static int GetTeemLengtByArea(Continent Countrytype)
+        public int GetTeemLengtByArea(Continent Countrytype)
         // Do a Test Case with return by 0
         {
             switch (Countrytype)
@@ -87,6 +88,36 @@ namespace WorldCup
                     return 0;
             }
         }
+        public int GetContinentCode(Continent Countrytype)
+        // Do a Test Case with return by 0
+        {
+            switch (Countrytype)
+            {
+                case Continent.Asia:
+                    return 1;
+                    break;
+                case Continent.Africa:
+                    return 2;
+                    break;
+                case Continent.AmericaandCaribe:
+                    return 3;
+                    break;
+                case Continent.SouthAmerica:
+                    return 4;
+                    break;
+                case Continent.Host:
+                    return 7;
+                    break;
+                case Continent.Europe:
+                    return 6;
+                    break;
+                case Continent.Australia:
+                    return 5;
+                    break;
+                default:
+                    return 0;
+            }
 
+        }
     }
 }

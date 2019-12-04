@@ -12,6 +12,9 @@ namespace TestWorldCup
         [TestMethod]
         public void InitTeem()
         {
+            DatabaseConnector databaseConnector = new DatabaseConnector();
+            //databaseConnector.makeQueryByTeem("Select name From player",Continent.Asia);
+            Teem teems = new Teem();
             
         }
     }
