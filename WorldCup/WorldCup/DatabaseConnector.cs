@@ -23,7 +23,7 @@ namespace WorldCup
             }
         }
         SqlConnection connection = new SqlConnection();
-        Teem teem = new Teem();
+        
         public DatabaseConnector()
         {
             connection.ConnectionString = path_connection;
@@ -46,20 +46,22 @@ namespace WorldCup
         {
             connection.Close();
         }
-        public void makeQueryByTeem(String Query, int ContinnentArea) {
+        public Teem makeQueryByTeem(String Query, int ContinnentArea) {
+            Teem teem = new Teem();
             SqlCommand command = new SqlCommand(Query + " where team = " + ContinnentArea.ToString(), makeConnection("open"));
             SqlDataReader reader = command.ExecuteReader();
             Console.WriteLine("Did come to here");
+            teem.ContinentCode = ContinnentArea;
             while (reader.Read())
             {
                 //String data = reader["name"].ToString();
                 //Console.WriteLine(reader["name"].ToString() + reader["name"].GetType());
                 teem.AddplayerToTeem(reader["name"].ToString());
-                teem.ContinentCode = ContinnentArea;
-                //Console.WriteLine(reader["name"].ToString().GetType());
+                //Console.WriteLine(teem.ContinentCode.ToString());
             }
+            
             closeConnection(makeConnection("close"));
-
+            return teem;
         }
 
         public string _ClearTable(String TableToFlash)

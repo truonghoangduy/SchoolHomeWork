@@ -12,11 +12,91 @@ namespace TestWorldCup
     public class TestDatabaseConnector
     {
         DatabaseConnector database = new DatabaseConnector();
+        Area area = new Area();
         // Test Get Teem
+        [TestMethod]
         public void getAsianTeem()
         {
-            List<Player> players = new List<Player>;
+            Teem teem = new Teem();
+            String query = "Select name From player";
+            
+            teem=database.makeQueryByTeem(query, area.GetContinentCode(Continent.Asia));
+            Assert.AreEqual(area.GetContinentCode(Continent.Asia),teem.ContinentCode);
+            ////Assert.AreEqual(1, 1);
         }
+        [TestMethod]
+        public void getEuporpnTeem()
+        {
+            Teem teem = new Teem();
+            String query = "Select name From player";
+
+            teem = database.makeQueryByTeem(query, area.GetContinentCode(Continent.Europe));
+            Assert.AreEqual(area.GetContinentCode(Continent.Europe), teem.ContinentCode);
+            ////Assert.AreEqual(1, 1);
+        }
+
+        public void getNorthAmericaCentralTeem()
+        {
+            Teem teem = new Teem();
+            String query = "Select name From player";
+
+            teem = database.makeQueryByTeem(query, area.GetContinentCode(Continent.NorthAmericaCentral));
+            Assert.AreEqual(area.GetContinentCode(Continent.NorthAmericaCentral), teem.ContinentCode);
+            ////Assert.AreEqual(1, 1);
+        }
+        [TestMethod]
+        public void getSouthAmericaTeem()
+        {
+            Teem teem = new Teem();
+            String query = "Select name From player";
+
+            teem = database.makeQueryByTeem(query, area.GetContinentCode(Continent.SouthAmerica));
+            Assert.AreEqual(area.GetContinentCode(Continent.SouthAmerica), teem.ContinentCode);
+            ////Assert.AreEqual(1, 1);
+        }
+        [TestMethod]
+        public void getHostTeem()
+        {
+            Teem teem = new Teem();
+            String query = "Select name From player";
+
+            teem = database.makeQueryByTeem(query, area.GetContinentCode(Continent.Host));
+            Assert.AreEqual(area.GetContinentCode(Continent.Host), teem.ContinentCode);
+            ////Assert.AreEqual(1, 1);
+        }
+        [TestMethod]
+        public void getAustraliaaTeem()
+        {
+            Teem teem = new Teem();
+            String query = "Select name From player";
+
+            teem = database.makeQueryByTeem(query, area.GetContinentCode(Continent.Australia));
+            Assert.AreEqual(area.GetContinentCode(Continent.Australia), teem.ContinentCode);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

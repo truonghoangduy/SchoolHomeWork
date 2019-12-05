@@ -8,9 +8,9 @@ namespace WorldCup
 {
     public enum Continent
     {
+        ForTestCase,
         Asia, Africa
     , NorthAmericaCentral,
-        AmericaandCaribe,
         SouthAmerica,
         Australia,
         Europe,
@@ -69,9 +69,6 @@ namespace WorldCup
                 case Continent.Africa:
                     return 5;
                     break;
-                case Continent.AmericaandCaribe:
-                    return 3;
-                    break;
                 case Continent.SouthAmerica:
                     return 3;
                     break;
@@ -99,9 +96,7 @@ namespace WorldCup
                 case Continent.Africa:
                     return 2;
                     break;
-                case Continent.AmericaandCaribe:
-                    return 3;
-                    break;
+
                 case Continent.SouthAmerica:
                     return 4;
                     break;

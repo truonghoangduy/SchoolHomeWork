@@ -11,6 +11,7 @@ namespace WorldCup
         static void Main(string[] args)
         {
             Area area = new Area();
+            Teem teemEnter = new Teem();
             //Player Induvitual = new Player("duy");
             //Console.WriteLine(Induvitual.playerName + Induvitual._Pesonalsroce.ToString());
             //Console.ReadLine();
@@ -18,13 +19,12 @@ namespace WorldCup
             //String Querydata = @'SELECT * FROM player';
             database.makeQueryByTeem("Select name From player", area.GetContinentCode(Continent.Asia));
 
-            Console.ReadLine();
-            Teem teemEnter = new Teem();
-            teemEnter.printall();
             //Match match = new Match();
+            teemEnter.printallPlayer();
 
-            Console.WriteLine(database._ClearTable("aaaa"))
-;
+
+
+
             Console.ReadLine();
 
             //Area test = new Area();

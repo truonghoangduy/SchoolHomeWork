@@ -15,16 +15,17 @@ namespace WorldCup
         public int TeemTotalSroce { set; get; }
         public void AddplayerToTeem(String Name)
         {
-            Console.WriteLine(Name);
+            ////Console.WriteLine(Name);
             Player player = new Player(Name);
             listOfPlayer.Add(player);
         } 
-        public void printall()
+        public void printallPlayer()
         {
             // Player name and their personalGoal
             foreach (var item in listOfPlayer)
             {
-                Console.WriteLine(item.playerName +"  "+item._Pesonalsroce +"  ");
+                //Console.WriteLine(ContinentCode.ToString());
+                Console.WriteLine(item.playerName +"  "+item._Pesonalsroce +"  " );
             }
         }
 
