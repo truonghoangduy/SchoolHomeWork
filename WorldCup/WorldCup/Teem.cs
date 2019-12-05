@@ -11,6 +11,8 @@ namespace WorldCup
         public List<Player> listOfPlayer = new List<Player>();
         public int teemindexing { set; get; }
         public String Coach { get; set; }
+
+        public String CountryName { set; get; }
         public int ContinentCode { set; get; }
         public int TeemTotalSroce { set; get; }
         public void AddplayerToTeem(String Name)
@@ -21,12 +23,14 @@ namespace WorldCup
         } 
         public void printallPlayer()
         {
+            Console.WriteLine("-------------------------------------------------------------------");
             // Player name and their personalGoal
             foreach (var item in listOfPlayer)
             {
-                //Console.WriteLine(ContinentCode.ToString());
-                Console.WriteLine(item.playerName +"  "+item._Pesonalsroce +"  " );
+                //Console.WriteLine(item.playerName +"  "+item._Pesonalsroce +"  ",ContinentCode.ToString());
+                Console.WriteLine($"Player Name {item.playerName} Sorce {item._Pesonalsroce} From {CountryName} AreaCode {ContinentCode}");
             }
+            Console.WriteLine("-------------------------------------------------------------------");
         }
 
     }

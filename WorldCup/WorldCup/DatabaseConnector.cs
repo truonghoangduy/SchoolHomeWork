@@ -28,7 +28,7 @@ namespace WorldCup
         {
             connection.ConnectionString = path_connection;
         }
-        public SqlConnection makeConnection(String flag) {
+        public SqlConnection makeConnection(String flag) { // Done
 
 
             if (flag == "open")
@@ -46,23 +46,51 @@ namespace WorldCup
         {
             connection.Close();
         }
-        public Teem makeQueryByTeem(String Query, int ContinnentArea) {
-            Teem teem = new Teem();
-            SqlCommand command = new SqlCommand(Query + " where team = " + ContinnentArea.ToString(), makeConnection("open"));
+        public List<Teem> makeTeam_QueryBy_Continnent(int ContinnentArea) { // Done
+            List<Teem> teems = new List<Teem>();
+            //SqlCommand command = new SqlCommand(Query + " where team = " + ContinnentArea.ToString(), makeConnection("open"));
+            String GivenCommand = "select * from [team] where region in " +
+                $"(select id_region from region where region.id_region = {ContinnentArea})";
+            SqlCommand command = new SqlCommand(GivenCommand, makeConnection("open"));
             SqlDataReader reader = command.ExecuteReader();
             Console.WriteLine("Did come to here");
-            teem.ContinentCode = ContinnentArea;
+            
             while (reader.Read())
             {
-                //String data = reader["name"].ToString();
-                //Console.WriteLine(reader["name"].ToString() + reader["name"].GetType());
-                teem.AddplayerToTeem(reader["name"].ToString());
+                Teem teemObject = new Teem();
+                //teemObject.AddplayerToTeem(reader["playername"].ToString());
+                teemObject.teemindexing = (int)reader["id_team"];
+                teemObject.Coach = reader["coach"].ToString();
+                teemObject.CountryName = reader["name"].ToString();
+                teemObject.ContinentCode = ContinnentArea;
+                teems.Add(teemObject);
                 //Console.WriteLine(teem.ContinentCode.ToString());
-            }
-            
+            }           
             closeConnection(makeConnection("close"));
-            return teem;
+            foreach (var item in teems)
+            {
+                item.listOfPlayer = GetPlayerByTeem(item.teemindexing);
+            }
+            return teems;
         }
+
+        public List<Player> GetPlayerByTeem(int TeamID)
+        {
+            List<Player> playerName = new List<Player>();
+            String GivenCommand = "select name from [player] " +
+                    $"where team={TeamID}";
+            SqlCommand command = new SqlCommand(GivenCommand, makeConnection("open"));
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Player player = new Player(reader["name"].ToString());
+                playerName.Add(player);
+            }
+            makeConnection("close");
+            return playerName;
+        }
+
+
 
         public string _ClearTable(String TableToFlash)
         {
@@ -103,6 +131,12 @@ namespace WorldCup
         //    SqlCommand command = new SqlCommand(Query,connection1);
         //    return tempReturn;
         //}
+        public void WriteMatchToDB()
+        {
+        //    String GivenCommand = "select name from [player] " +
+        //$"where team={TeamID}";
+            //SqlCommand command = new SqlCommand(GivenCommand, makeConnection("open"));
+        }
 
     }
 }

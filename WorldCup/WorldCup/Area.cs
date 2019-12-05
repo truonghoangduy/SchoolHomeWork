@@ -70,7 +70,7 @@ namespace WorldCup
                     return 5;
                     break;
                 case Continent.SouthAmerica:
-                    return 3;
+                    return 4;
                     break;
                 case Continent.Host:
                     return 1;

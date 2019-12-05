@@ -9,20 +9,21 @@ namespace WorldCup
     public class Match
     {
         // Match bettwen 2 teem
-        public Teem TeemA { set; get; }
-        public Teem TeemB { set; get; }
+        //public Teem TeemA { set; get; }
+        //public Teem TeemB { set; get; }
 
         public int _winSroce;
         public int _loseSroce;
         Random random = new Random();
-        public void randomSroce()
+        //public void Playoff
+        private void randomSroce()
         {
             int winSroce = random.Next(0, 5);
             int loseSroce = random.Next(winSroce, 7);
             _winSroce = winSroce;
             _loseSroce = loseSroce;
         }
-        public void RandomplayerGoal(Teem teem, int teemSroce) {
+        private void RandomplayerGoal(Teem teem, int teemSroce) {
 
             // Distribute player Sroce by it teem sroce
             //Encapsulation method
@@ -32,6 +33,34 @@ namespace WorldCup
                 int selected_player = random.Next(1, teem.listOfPlayer.Count);
                 teem.listOfPlayer[selected_player]._Pesonalsroce = teemSroce;
                 teemSroce = teemSroce - _sroce;
+            }
+        }
+        public void who_Is_Winning(Teem teemA,Teem teemB)
+        {
+            bool flag = random_Who_Win();
+            randomSroce();
+            if (flag)
+            {
+                teemA.TeemTotalSroce = _winSroce;
+                RandomplayerGoal(teemA, _winSroce);
+            }
+            else
+            {
+                teemB.TeemTotalSroce = _winSroce;
+                RandomplayerGoal(teemB, _winSroce);
+            }
+        }
+
+        public bool random_Who_Win()
+        {
+            int tempFlag = random.Next(0, 1);
+            if (tempFlag==0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
 
