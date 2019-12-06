@@ -12,6 +12,7 @@ namespace WorldCup
         public int teemindexing { set; get; }
         public String Coach { get; set; }
 
+        public int SrocePerRound { get; set; }
         public String CountryName { set; get; }
         public int ContinentCode { set; get; }
         public int TeemTotalSroce { set; get; }

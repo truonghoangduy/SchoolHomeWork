@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Area.cs" />
     <Compile Include="DatabaseConnector.cs" />
+    <Compile Include="FinalRound.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />

@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestDatabaseConnector.cs" />
+    <Compile Include="TestFinalRound.cs" />
     <Compile Include="TestTeem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
