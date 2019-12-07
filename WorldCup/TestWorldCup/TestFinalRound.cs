@@ -59,16 +59,18 @@ namespace TestWorldCup
             Teem teem = new Teem();
             var teemList = database.makeTeam_QueryBy_Continnent(area.GetContinentCode(Continent.Asia));
             var whowin = final.startFinal(teemList[0], teemList[1]);
-            int WinnerSorce = whowin.TeemTotalSroce;
+            int WinnerSorce = whowin.SrocePerRound;
             int TotalDitrubtedPlayerSorce = 0;
             foreach (var item in whowin.listOfPlayer)
             {
-                if (item._Pesonalsroce!=0)
+                if (item._Pesonalsroce != 0)
                 {
                     TotalDitrubtedPlayerSorce += item._Pesonalsroce;
+                    //Console.WriteLine(item._Pesonalsroce);
                 }
             }
-            Assert.AreEqual(whowin.TeemTotalSroce, TotalDitrubtedPlayerSorce);
+            Console.WriteLine($"Teem Has a Sroce of {whowin.SrocePerRound}  And has Distribute Sroce to Their Goal Player");
+            Assert.AreEqual(whowin.SrocePerRound, TotalDitrubtedPlayerSorce);
         }
     }
 }

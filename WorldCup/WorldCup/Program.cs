@@ -47,7 +47,13 @@ namespace WorldCup
             Teem teem = new Teem();
             var teemList = database.makeTeam_QueryBy_Continnent(area.GetContinentCode(Continent.Asia));
             var whowin = final.startFinal(teemList[0], teemList[1]);
-            Console.WriteLine("The winner is : "+whowin.CountryName+"  which the total of "+whowin.SrocePerRound);
+            Console.WriteLine("Teem Enter");
+            for (int i = 0; i < teemList.Count; i++)
+            {
+                Console.WriteLine(teemList[i].CountryName);
+            }
+            Console.WriteLine("---------------------");
+            Console.WriteLine("The winner is : "+whowin.CountryName +"  which the total of "+whowin.SrocePerRound);
             foreach (var item in whowin.listOfPlayer)
             {
                 Console.WriteLine(item.playerName+" "+item._Pesonalsroce.ToString());

@@ -16,6 +16,8 @@ namespace WorldCup
         public String CountryName { set; get; }
         public int ContinentCode { set; get; }
         public int TeemTotalSroce { set; get; }
+
+        public int Numofassistant { set; get; }
         public void AddplayerToTeem(String Name)
         {
             ////Console.WriteLine(Name);
@@ -32,6 +34,20 @@ namespace WorldCup
                 Console.WriteLine($"Player Name {item.playerName} Sorce {item._Pesonalsroce} From {CountryName} AreaCode {ContinentCode}");
             }
             Console.WriteLine("-------------------------------------------------------------------");
+        }
+        public int getNumofassistant()
+        {
+            if (this.Numofassistant == 3)
+                return 3;
+            else
+                return 0;
+        }
+        public int getNumOfCoach()
+        {
+            if (this.Coach == "")
+                return 0;
+            else
+                return 1;
         }
 
     }

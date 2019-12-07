@@ -23,12 +23,13 @@ namespace WorldCup
             }
         }
         SqlConnection connection = new SqlConnection();
-        
+
         public DatabaseConnector()
         {
             connection.ConnectionString = path_connection;
         }
-        public SqlConnection makeConnection(String flag) { // Done
+        public SqlConnection makeConnection(String flag)
+        { // Done
 
 
             if (flag == "open")
@@ -46,7 +47,8 @@ namespace WorldCup
         {
             connection.Close();
         }
-        public List<Teem> makeTeam_QueryBy_Continnent(int ContinnentArea) { // Done
+        public List<Teem> makeTeam_QueryBy_Continnent(int ContinnentArea)
+        { // Done
             List<Teem> teems = new List<Teem>();
             //SqlCommand command = new SqlCommand(Query + " where team = " + ContinnentArea.ToString(), makeConnection("open"));
             String GivenCommand = "select * from [team] where region in " +
@@ -54,7 +56,7 @@ namespace WorldCup
             SqlCommand command = new SqlCommand(GivenCommand, makeConnection("open"));
             SqlDataReader reader = command.ExecuteReader();
             Console.WriteLine("Did come to here");
-            
+
             while (reader.Read())
             {
                 Teem teemObject = new Teem();
@@ -65,7 +67,7 @@ namespace WorldCup
                 teemObject.ContinentCode = ContinnentArea;
                 teems.Add(teemObject);
                 //Console.WriteLine(teem.ContinentCode.ToString());
-            }           
+            }
             closeConnection(makeConnection("close"));
             foreach (var item in teems)
             {
@@ -113,7 +115,7 @@ namespace WorldCup
                 catch (Exception e)
                 {
                     //MessageBox.Show(e.Message);
-                    return e.Message.Contains("Invalid") ? "Somethings wrong check connection":"Table not found"
+                    return e.Message.Contains("Invalid") ? "Somethings wrong check connection" : "Table not found"
                         ;
                 }
             }
@@ -131,11 +133,20 @@ namespace WorldCup
         //    SqlCommand command = new SqlCommand(Query,connection1);
         //    return tempReturn;
         //}
-        public void WriteMatchToDB()
+
+
+        /*GROUND:
+
+*/
+        public bool WriteMatchToDB(Teem teemA,Teem teemB,int stage=0,int ground=0,string sroce="")
         {
-        //    String GivenCommand = "select name from [player] " +
-        //$"where team={TeamID}";
-            //SqlCommand command = new SqlCommand(GivenCommand, makeConnection("open"));
+            // this fuction write to Database which ref stage or ground if them are not 0 then it consider a legit match
+            String GivenCommand = "INSERT INTO game (stage,ground,teemA,teemB,sroce)"
+            + $"VALUES({stage},{ground},{teemA.CountryName},{teemB.CountryName},{sroce})";
+            SqlCommand command = new SqlCommand(GivenCommand, makeConnection("open"));
+            command.ExecuteNonQuery();
+            makeConnection("close");
+            return true;
         }
 
     }

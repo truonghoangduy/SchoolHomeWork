@@ -6,6 +6,29 @@ using System.Threading.Tasks;
 
 namespace WorldCup
 {
+    public enum Stage_Enum
+    {
+        TestCase,
+        playoff,
+        group,
+        knockout,
+        quarterfinal,
+        semifinal,
+        final,
+    }
+    public enum Ground_Enum
+    {
+        TestCase,
+        A, 
+        B, 
+        C, 
+        D, 
+        E, 
+        F, 
+        G, 
+        H
+    }
+
     public class Match
     {
         // Match bettwen 2 teem
@@ -23,11 +46,13 @@ namespace WorldCup
             _winSroce = winSroce;
             _loseSroce = loseSroce;
         }
-        private void RandomplayerGoal(Teem teem, int teemSroce) {
+        private void RandomplayerGoal(Teem teem, int teemSroce)
+        {
 
             // Distribute player Sroce by it teem sroce
             //Encapsulation method
-            while (teemSroce > 0) {
+            while (teemSroce > 0)
+            {
                 int _sroce = random.Next(1, teemSroce);
                 int selected_player = random.Next(0, teem.listOfPlayer.Count);
                 teem.listOfPlayer[selected_player]._Pesonalsroce = _sroce;
@@ -41,14 +66,14 @@ namespace WorldCup
             randomSroce();
             if (flag)
             {
-                TeemA.TeemTotalSroce +=3;
+                TeemA.TeemTotalSroce += 3;
                 TeemA.SrocePerRound = _winSroce;
                 RandomplayerGoal(TeemA, _winSroce);
                 RandomplayerGoal(TeemB, _loseSroce);
             }
             else
             {
-                TeemB.TeemTotalSroce +=3;
+                TeemB.TeemTotalSroce += 3;
                 TeemB.SrocePerRound = _winSroce;
                 RandomplayerGoal(TeemB, _winSroce);
                 RandomplayerGoal(TeemA, _loseSroce);
@@ -58,7 +83,7 @@ namespace WorldCup
         public bool random_Who_Win()
         {
             int tempFlag = random.Next(0, 1);
-            if (tempFlag==0)
+            if (tempFlag == 0)
             {
                 return false;
             }
@@ -71,7 +96,7 @@ namespace WorldCup
         {
             get
             {
-                return whowwin? TeemA : TeemB;
+                return whowwin ? TeemA : TeemB;
             }
         }
 
