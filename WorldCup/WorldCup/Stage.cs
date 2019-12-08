@@ -197,7 +197,7 @@ namespace WorldCup
                         math.TeemA = InitTeem[i];
                         math.TeemB = InitTeem[i + 1];
                         math.who_Is_Winning();
-                        Console.WriteLine(math.Winner.teemindexing.ToString() + "    " + math.Loser.teemindexing.ToString());
+                        
                         String matchSroceZ = math._winSroce + ":" + math._loseSroce;
                         result.writeResultToDatabase(math.Winner, math.Loser, stage: getGround(Stage_Enum.group), ground: counterRound, sroce: matchSroceZ);
                         Teemremote.Add(math.Loser.teemindexing);
@@ -262,7 +262,7 @@ namespace WorldCup
                         math.TeemA = InitTeem[i];
                         math.TeemB = InitTeem[i + 1];
                         math.who_Is_Winning();
-                        Console.WriteLine(math.Winner.teemindexing.ToString() + "    " + math.Loser.teemindexing.ToString());
+                        
                         String matchSroceZ = math._winSroce + ":" + math._loseSroce;
                         result.writeResultToDatabase(math.Winner, math.Loser, stage: getGround(Stage_Enum.group), ground: counterRound, sroce: matchSroceZ);
                         
@@ -321,7 +321,7 @@ namespace WorldCup
                     math.TeemA = InitTeem[i];
                     math.TeemB = InitTeem[i + 1];
                     math.who_Is_Winning();
-                    Console.WriteLine(math.Winner.teemindexing.ToString() + "    " + math.Loser.teemindexing.ToString());
+                    
                     String matchSroceZ = math._winSroce + ":" + math._loseSroce;
                     result.writeResultToDatabase(math.Winner, math.Loser, stage: getGround(Stage_Enum.quarterfinal), ground: counterRound2, sroce: matchSroceZ);
                     RoundHasPlay.Add(counterRound2);
@@ -360,7 +360,7 @@ namespace WorldCup
                     math.TeemA = InitTeem[i];
                     math.TeemB = InitTeem[i + 1];
                     math.who_Is_Winning();
-                    Console.WriteLine(math.Winner.teemindexing.ToString() + "    " + math.Loser.teemindexing.ToString());
+                    
                     String matchSroceZ = math._winSroce + ":" + math._loseSroce;
                     result.writeResultToDatabase(math.Winner, math.Loser, stage: getGround(Stage_Enum.semifinal), ground: counterRound2, sroce: matchSroceZ);
                     RoundHasPlay.Add(counterRound2);
@@ -399,7 +399,7 @@ namespace WorldCup
                     math.TeemA = InitTeem[i];
                     math.TeemB = InitTeem[i + 1];
                     math.who_Is_Winning();
-                    Console.WriteLine(math.Winner.teemindexing.ToString() + "    " + math.Loser.teemindexing.ToString());
+                    
                     String matchSroceZ = math._winSroce + ":" + math._loseSroce;
                     result.writeResultToDatabase(math.Winner, math.Loser, stage: getGround(Stage_Enum.semifinal), ground: counterRound2, sroce: matchSroceZ);
                     RoundHasPlay.Add(counterRound2);

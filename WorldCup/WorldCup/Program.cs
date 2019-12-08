@@ -162,23 +162,11 @@ namespace WorldCup
             {
                 //Console.WriteLine(stage.InitTeem.Count());
                 stage.Start_Frist_PlayOff();
-                Console.WriteLine(stage.InitTeem.Count());
                 stage.Start_Sec_PlayOff();
-                Console.WriteLine(stage.InitTeem.Count());
                 stage.Start_Frist_RoundBattle();
-                Console.WriteLine("Final Outpt");
-                Console.WriteLine(stage.InitTeem.Count()-1);
                 stage.Start_Sec_RoundBattle();
-                Console.WriteLine("Final Outpt");
-                Console.WriteLine(stage.InitTeem.Count() - 1);
-                //stage.Start_Sec_RoundBattle();
-                //Console.WriteLine(stage.InitTeem.Count());
-                //Console.WriteLine("Yooo" + "        " + stage.InitTeem.Count());
-
                 stage.Start_QuaterFinal();
-                
                 stage.Start_SemiFinal();
-                Console.WriteLine("Final");
                 stage.Start_Final();
 
 

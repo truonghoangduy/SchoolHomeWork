@@ -188,5 +188,35 @@ namespace TestWorldCup
                 Assert.IsTrue(11 < item.listOfPlayer.Count);
             }
         }
+
+        [TestMethod]
+        public void Player_In_Europe_Teem_Has_MinumumPlayer()
+        {
+            var teem = database.makeTeam_QueryBy_Continnent(area.GetContinentCode(Continent.Europe));
+            foreach (var item in teem)
+            {
+                Assert.IsTrue(11 < item.listOfPlayer.Count);
+            }
+        }
+
+        [TestMethod]
+        public void Player_In_NorthAmericaCentral_Teem_Has_MinumumPlayer()
+        {
+            var teem = database.makeTeam_QueryBy_Continnent(area.GetContinentCode(Continent.NorthAmericaCentral));
+            foreach (var item in teem)
+            {
+                Assert.IsTrue(11 < item.listOfPlayer.Count);
+            }
+        }
+
+        [TestMethod]
+        public void Player_In_SouthAmerica_Teem_Has_MinumumPlayer()
+        {
+            var teem = database.makeTeam_QueryBy_Continnent(area.GetContinentCode(Continent.SouthAmerica));
+            foreach (var item in teem)
+            {
+                Assert.IsTrue(11 < item.listOfPlayer.Count);
+            }
+        }
     }
 }
