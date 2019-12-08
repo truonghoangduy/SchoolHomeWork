@@ -34,6 +34,9 @@ namespace WorldCup
         public Match math = new Match();
         public Result result = new Result();
         public DatabaseConnector database = new DatabaseConnector();
+
+
+        public List<int> RoundHasPlay =new List<int>();
         public void Add_Teem_To_Stage(List<Teem> teemObject)
         {
             InitTeem.AddRange(teemObject);
@@ -159,8 +162,6 @@ namespace WorldCup
         {
             int counterRound = 1;
             List<int> Teemremote = new List<int>();
-            try
-            {
                 math.TeemA = InitTeem[17];
                 math.TeemB = InitTeem[18];
                 String matchSroceZ = math._winSroce + ":" + math._loseSroce;
@@ -170,21 +171,16 @@ namespace WorldCup
                 //Start Cleaning up the lose teem
                 var descendingOrder = Teemremote.OrderByDescending(i => i).ToList();
                 int remotecounter = 0;
-                foreach (var item in Teemremote)
-                {
-                    if (item != null)
-                    {
-                        InitTeem.RemoveAt(descendingOrder[remotecounter]);
-                        remotecounter += 1;
-                    }
-                }
-                return true;
-            }
-            catch (Exception)
+
+            foreach (var item in Teemremote)
             {
-                return false;
-                throw;
+                if (item != null)
+                {
+                    InitTeem.RemoveAt(descendingOrder[remotecounter]);
+                    remotecounter += 1;
+                }
             }
+            return true;
             
         }
 
@@ -194,9 +190,74 @@ namespace WorldCup
             List<int> Teemremote = new List<int>();
             try
             {
-                for (int i = 0; i <= 32; i += 2)
+                for (int i = 0; i < 32; i += 2)
                 {
-                    if (i <= 30)
+                    //if (i <= 31)
+                    //{
+                        math.TeemA = InitTeem[i];
+                        math.TeemB = InitTeem[i + 1];
+                        math.who_Is_Winning();
+                        Console.WriteLine(math.Winner.teemindexing.ToString() + "    " + math.Loser.teemindexing.ToString());
+                        String matchSroceZ = math._winSroce + ":" + math._loseSroce;
+                        result.writeResultToDatabase(math.Winner, math.Loser, stage: getGround(Stage_Enum.group), ground: counterRound, sroce: matchSroceZ);
+                        Teemremote.Add(math.Loser.teemindexing);
+                        RoundHasPlay.Add(counterRound);
+                        counterRound += 1;
+                    //}
+                    //else
+                    //{
+                    //    break;
+                    //}
+
+                }
+                    //Start Cleaning up the lose teem
+                    var descendingOrder = Teemremote.OrderByDescending(i => i).ToList();
+                for (int i = 0; i < descendingOrder.Count; i++)
+                {
+                    if (descendingOrder[i] > 31)
+                    {
+                        descendingOrder.RemoveAt(i);
+                    }
+                }
+                int remotecounter = 0;
+                foreach (var item in descendingOrder)
+                {
+                    if (item != null)
+                    {
+                        InitTeem.RemoveAt(descendingOrder[remotecounter]);
+                        remotecounter += 1;
+                    }
+                }
+                //for (int i = 0; i < descendingOrder.Count; i++)
+                //{
+                //    Console.WriteLine(InitTeem.Count);
+                //    InitTeem.RemoveAt(descendingOrder[i]);
+                //    Console.WriteLine(InitTeem.Count);
+                //    remotecounter += 1;
+                //}
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+                throw;
+            }
+           
+
+        }
+
+
+        public bool Start_Sec_RoundBattle()
+        {
+            Console.WriteLine("Sec Round");
+            int counterRound = 1;
+            List<int> Teemremote = new List<int>();
+            try
+            {
+                for (int i = 0; i <= 16; i += 2)
+                {
+                    if (i < 15)
                     {
                         math.TeemA = InitTeem[i];
                         math.TeemB = InitTeem[i + 1];
@@ -204,8 +265,16 @@ namespace WorldCup
                         Console.WriteLine(math.Winner.teemindexing.ToString() + "    " + math.Loser.teemindexing.ToString());
                         String matchSroceZ = math._winSroce + ":" + math._loseSroce;
                         result.writeResultToDatabase(math.Winner, math.Loser, stage: getGround(Stage_Enum.group), ground: counterRound, sroce: matchSroceZ);
-
-                        Teemremote.Add(math.Loser.teemindexing);
+                        
+                        if (math.TeemA.SrocePerRound > math.TeemB.SrocePerRound)
+                        {
+                            Teemremote.Add(i);
+                        }
+                        else
+                        {
+                            Teemremote.Add(i+1);
+                        }
+                        RoundHasPlay.Add(counterRound);
                         counterRound += 1;
                     }
                     else
@@ -217,61 +286,27 @@ namespace WorldCup
                 //Start Cleaning up the lose teem
                 var descendingOrder = Teemremote.OrderByDescending(i => i).ToList();
                 int remotecounter = 0;
-                foreach (var item in Teemremote)
+                for (int i = 0; i <= descendingOrder.Count; i++)
                 {
-                    if (item != null)
+                    if (descendingOrder[i] >= 16)
                     {
-                        InitTeem.RemoveAt(descendingOrder[remotecounter]);
-                        remotecounter += 1;
+                        descendingOrder.RemoveAt(i);
                     }
+                }
+                Console.WriteLine("AA");
+                for (int i = 0; i < descendingOrder.Count; i++)
+                {
+                    InitTeem.RemoveAt(i);
                 }
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return false;
                 throw;
             }
-           
 
-        }
-
-
-        public void Start_Sec_RoundBattle()
-        {
-            int counterRound2 = 1;
-            List<int> Teemremote = new List<int>();
-            for (int i = 0; i <= 16; i += 2)
-            {
-                if (i <= 14)
-                {
-                    math.TeemA = InitTeem[i];
-                    math.TeemB = InitTeem[i + 1];
-                    math.who_Is_Winning();
-                    Console.WriteLine(math.Winner.teemindexing.ToString() + "    " + math.Loser.teemindexing.ToString());
-                    String matchSroceZ = math._winSroce + ":" + math._loseSroce;
-                    result.writeResultToDatabase(math.Winner, math.Loser, stage: getGround(Stage_Enum.knockout), ground: counterRound2, sroce: matchSroceZ);
-
-                    Teemremote.Add(math.Loser.teemindexing);
-                    counterRound2 += 1;
-                }
-                else
-                {
-                    break;
-                }
-
-            }
-            //Start Cleaning up the lose teem
-            var descendingOrder = Teemremote.OrderByDescending(i => i).ToList();
-            int remotecounter = 0;
-            foreach (var item in Teemremote)
-            {
-                if (item != null)
-                {
-                    InitTeem.RemoveAt(descendingOrder[remotecounter]);
-                    remotecounter += 1;
-                }
-            }
 
         }
 
@@ -289,7 +324,7 @@ namespace WorldCup
                     Console.WriteLine(math.Winner.teemindexing.ToString() + "    " + math.Loser.teemindexing.ToString());
                     String matchSroceZ = math._winSroce + ":" + math._loseSroce;
                     result.writeResultToDatabase(math.Winner, math.Loser, stage: getGround(Stage_Enum.quarterfinal), ground: counterRound2, sroce: matchSroceZ);
-
+                    RoundHasPlay.Add(counterRound2);
                     Teemremote.Add(math.Loser.teemindexing);
                     counterRound2 += 1;
                 }
@@ -328,7 +363,7 @@ namespace WorldCup
                     Console.WriteLine(math.Winner.teemindexing.ToString() + "    " + math.Loser.teemindexing.ToString());
                     String matchSroceZ = math._winSroce + ":" + math._loseSroce;
                     result.writeResultToDatabase(math.Winner, math.Loser, stage: getGround(Stage_Enum.semifinal), ground: counterRound2, sroce: matchSroceZ);
-
+                    RoundHasPlay.Add(counterRound2);
                     Teemremote.Add(math.Loser.teemindexing);
                     counterRound2 += 1;
                 }
@@ -353,8 +388,45 @@ namespace WorldCup
             return false;
         }
 
+        public bool Start_Final()
+        {
+            int counterRound2 = 1;
+            List<int> Teemremote = new List<int>();
+            for (int i = 0; i <= 2; i += 2)
+            {
+                if (i <= 2)
+                {
+                    math.TeemA = InitTeem[i];
+                    math.TeemB = InitTeem[i + 1];
+                    math.who_Is_Winning();
+                    Console.WriteLine(math.Winner.teemindexing.ToString() + "    " + math.Loser.teemindexing.ToString());
+                    String matchSroceZ = math._winSroce + ":" + math._loseSroce;
+                    result.writeResultToDatabase(math.Winner, math.Loser, stage: getGround(Stage_Enum.semifinal), ground: counterRound2, sroce: matchSroceZ);
+                    RoundHasPlay.Add(counterRound2);
+                    Teemremote.Add(math.Loser.teemindexing);
+                    counterRound2 += 1;
+                }
+                else
+                {
+                    break;
+                }
 
+            }
+            //Start Cleaning up the lose teem
+            var descendingOrder = Teemremote.OrderByDescending(i => i).ToList();
+            int remotecounter = 0;
+            foreach (var item in Teemremote)
+            {
+                if (item != null)
+                {
+                    InitTeem.RemoveAt(descendingOrder[remotecounter]);
+                    remotecounter += 1;
+                }
+            }
 
-
+            return false;
+        }
     }
+
+
 }

@@ -47,57 +47,89 @@ namespace TestWorldCup
         [TestMethod]
         public void TestGoundA()
         {
-
-
+            Stage stage = new Stage();
+            stage.InitTeemForBattle();
+            stage.Start_Frist_PlayOff();
+            stage.Start_Frist_RoundBattle();
+            Assert.IsTrue(stage.RoundHasPlay.Contains(stage.getRoundPerRound(RoundPerRound.A)));
         }
 
         [TestMethod]
         public void TestGoundB()
         {
-
+            Stage stage = new Stage();
+            stage.InitTeemForBattle();
+            stage.Start_Frist_PlayOff();
+            stage.Start_Frist_RoundBattle();
+            Assert.IsTrue(stage.RoundHasPlay.Contains(stage.getRoundPerRound(RoundPerRound.B)));
 
         }
 
         [TestMethod]
         public void TestGoundC()
         {
-
+            Stage stage = new Stage();
+            stage.InitTeemForBattle();
+            stage.Start_Frist_PlayOff();
+            stage.Start_Frist_RoundBattle();
+            Assert.IsTrue(stage.RoundHasPlay.Contains(stage.getRoundPerRound(RoundPerRound.C)));
 
         }
 
         [TestMethod]
         public void TestGoundD()
         {
-
+            Stage stage = new Stage();
+            stage.InitTeemForBattle();
+            stage.Start_Frist_PlayOff();
+            stage.Start_Frist_RoundBattle();
+            Assert.IsTrue(stage.RoundHasPlay.Contains(stage.getRoundPerRound(RoundPerRound.D)));
 
         }
 
         [TestMethod]
         public void TestGoundE()
         {
-
+            Stage stage = new Stage();
+            stage.InitTeemForBattle();
+            stage.Start_Frist_PlayOff();
+            stage.Start_Frist_RoundBattle();
+            Assert.IsTrue(stage.RoundHasPlay.Contains(stage.getRoundPerRound(RoundPerRound.E)));
 
         }
 
         [TestMethod]
         public void TestGoundF()
         {
-
+            Stage stage = new Stage();
+            stage.InitTeemForBattle();
+            stage.Start_Frist_PlayOff();
+            stage.Start_Frist_RoundBattle();
+            Assert.IsTrue(stage.RoundHasPlay.Contains(stage.getRoundPerRound(RoundPerRound.F)));
 
         }
 
         [TestMethod]
         public void TestGoundG()
         {
-
+            Stage stage = new Stage();
+            stage.InitTeemForBattle();
+            stage.Start_Frist_PlayOff();
+            stage.Start_Frist_RoundBattle();
+            Assert.IsTrue(stage.RoundHasPlay.Contains(stage.getRoundPerRound(RoundPerRound.G)));
 
         }
 
         [TestMethod]
         public void TestGoundH()
         {
-
+            Stage stage = new Stage();
+            stage.InitTeemForBattle();
+            stage.Start_Frist_PlayOff();
+            stage.Start_Frist_RoundBattle();
+            Assert.IsTrue(stage.RoundHasPlay.Contains(stage.getRoundPerRound(RoundPerRound.H)));
 
         }
+
     }
 }
