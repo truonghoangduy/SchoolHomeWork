@@ -20,28 +20,28 @@ namespace TestWorldCup
         public void TestPlayoffMatch_For_Teem1_writeResultToDatabase()
         {
 
-            Result result = new Result();
+            Stage stage = new Stage();
             var TeemAsia = database.makeTeam_QueryBy_Continnent(area.GetContinentCode(Continent.Asia));
             var TeemNorthAmericaCentral = database.makeTeam_QueryBy_Continnent(area.GetContinentCode(Continent.NorthAmericaCentral));
-            result.math.TeemA = TeemAsia[5];
-            result.math.TeemB = TeemNorthAmericaCentral[3];
-            result.math.who_Is_Winning();
-            String matchSroce = result.math._winSroce + ":" + result.math._loseSroce;
-            Assert.AreEqual(1, result.writeResultToDatabase(stage: 1, sroce: matchSroce));
+            stage.math.TeemA = TeemAsia[5];
+            stage.math.TeemB = TeemNorthAmericaCentral[3];
+            stage.math.who_Is_Winning();
+            String matchSroceZ = stage.math._winSroce + ":" + stage.math._loseSroce;
+            Assert.AreEqual(1, stage.result.writeResultToDatabase(stage.math.Winner, stage.math.Loser,stage: stage.getGround(Stage_Enum.playoff), ground: 0, sroce: matchSroceZ));
         }
 
         [TestMethod]
         public void TestPlayoffMatch_For_SouthAremicaVSAus__writeResultToDatabase()
         {
-            Result result = new Result();
-            var TeemAustralia = database.makeTeam_QueryBy_Continnent(area.GetContinentCode(Continent.Australia));
-            var TeemSouthAmerica = database.makeTeam_QueryBy_Continnent(area.GetContinentCode(Continent.SouthAmerica));
-            result.math.TeemA = TeemAustralia[0];
-            result.math.TeemB = TeemSouthAmerica[3];
-            result.math.who_Is_Winning();
-            String matchSroce = result.math._winSroce + ":" + result.math._loseSroce;
-            Console.WriteLine(matchSroce);
-            Assert.AreEqual(1, result.writeResultToDatabase(stage: 1, sroce: matchSroce));
+
+            Stage stage = new Stage();
+            var TeemAsia = database.makeTeam_QueryBy_Continnent(area.GetContinentCode(Continent.Asia));
+            var TeemNorthAmericaCentral = database.makeTeam_QueryBy_Continnent(area.GetContinentCode(Continent.NorthAmericaCentral));
+            stage.math.TeemA = TeemAsia[0];
+            stage.math.TeemB = TeemNorthAmericaCentral[3];
+            stage.math.who_Is_Winning();
+            String matchSroceZ = stage.math._winSroce + ":" + stage.math._loseSroce;
+            Assert.AreEqual(1, stage.result.writeResultToDatabase(stage.math.Winner, stage.math.Loser,stage: stage.getGround(Stage_Enum.playoff), ground: 0, sroce: matchSroceZ));
         }
 
         [TestMethod]

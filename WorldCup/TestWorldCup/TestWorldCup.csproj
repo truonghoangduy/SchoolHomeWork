@@ -52,6 +52,7 @@
     <Compile Include="TestDatabaseConnector.cs" />
     <Compile Include="TestFinalRound.cs" />
     <Compile Include="TestResult.cs" />
+    <Compile Include="TestStage.cs" />
     <Compile Include="TestTeem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

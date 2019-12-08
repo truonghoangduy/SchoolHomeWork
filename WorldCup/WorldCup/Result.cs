@@ -13,12 +13,11 @@ namespace WorldCup
     /// .</summary>
     public class Result
     {
-        public List<Teem> InitTeem = new List<Teem>();
-        public Match math = new Match();
-        public int writeResultToDatabase(int stage = 0, int ground = 0, string sroce = "")
+        public List<Teem> teem = new List<Teem>();
+        public int writeResultToDatabase(Teem Winner, Teem Losser,int stage = 0, int ground = 0, string sroce = "")
         {
             DatabaseConnector database = new DatabaseConnector();
-            if (database.WriteMatchToDB(math.Winner, math.Loser, stage, ground, sroce))
+            if (database.WriteMatchToDB(Winner, Losser, stage, ground, sroce))
             {
                 return 1;
             } else { 
