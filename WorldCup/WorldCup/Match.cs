@@ -28,13 +28,24 @@ namespace WorldCup
         G, 
         H
     }
-
+    /// <summary>Class <c>Match</c> 
+    /// <list>This class performs an important function which is handle the randomation</list>
+    /// <list>of each teem and Distribute those sroce within their player</list>
+    /// <list>This class method has been test by TestWorldCup Project</list>
+    /// .</summary>
+    ///
     public class Match
     {
+
         // Match bettwen 2 teem
+        /// <summary>
+        ///  This class performs an important function which is handle the randomation
+        ///  of each teem and Distribute those sroce within their player
+        ///  This class method has been test by TestWorldCup Project
+        /// </summary>
         public Teem TeemA { set; get; }
         public Teem TeemB { set; get; }
-        bool whowwin;
+        public bool whowwin;
         public int _winSroce;
         public int _loseSroce;
         Random random = new Random();
@@ -99,6 +110,14 @@ namespace WorldCup
                 return whowwin ? TeemA : TeemB;
             }
         }
+        public Teem Loser
+        {
+            get
+            {
+                return !whowwin ? TeemA : TeemB;
+            }
+        }
+
 
 
     }

@@ -11,6 +11,8 @@ namespace WorldCup
 {
     public class DatabaseConnector
     {
+
+
         private String path_connection
         {
             get
@@ -141,11 +143,20 @@ namespace WorldCup
         public bool WriteMatchToDB(Teem teemA,Teem teemB,int stage=0,int ground=0,string sroce="")
         {
             // this fuction write to Database which ref stage or ground if them are not 0 then it consider a legit match
-            String GivenCommand = "INSERT INTO game (stage,ground,teemA,teemB,sroce)"
-            + $"VALUES({stage},{ground},{teemA.CountryName},{teemB.CountryName},{sroce})";
+            String GivenCommand = "INSERT INTO game(stage, ground, teamA, teamB, score) "
+            + $"VALUES({stage},{ground}," + @"'" + $"{ teemA.CountryName}" + @"'" +"," + @"'" + $"{teemB.CountryName}" + @"'" + "," + @"'" + $"{sroce}" +@"'"+")";
             SqlCommand command = new SqlCommand(GivenCommand, makeConnection("open"));
             command.ExecuteNonQuery();
             makeConnection("close");
+            return true;
+        }
+
+        public bool getMatchResultFromDB(int stage,int ground) {
+            if (stage ==0 && ground==0)
+            {
+                return false;
+            }
+            
             return true;
         }
 

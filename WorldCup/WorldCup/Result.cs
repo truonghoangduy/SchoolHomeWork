@@ -5,16 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace WorldCup
-{   
-    // This Class use to mangage Teem Result as they Enter Each Play Round 
-    // Which is handle the job to call the DatabaseConnector Class and Divier their record
+{
+
+    /// <summary>Class <c>Result</c> 
+    /// <list>This Class use to mangage Teem Result as they Enter Each Play Round </list>
+    /// <list> Which is handle the job to call the DatabaseConnector Class and deliver their record</list>
+    /// .</summary>
     public class Result
     {
-        public Teem teem { set; get; }
-        public int writeResultToDatabase()
+        public List<Teem> InitTeem = new List<Teem>();
+        public Match math = new Match();
+        public int writeResultToDatabase(int stage = 0, int ground = 0, string sroce = "")
         {
-
-            return 0;
+            DatabaseConnector database = new DatabaseConnector();
+            if (database.WriteMatchToDB(math.Winner, math.Loser, stage, ground, sroce))
+            {
+                return 1;
+            } else { 
+            return 0; }
         }
+
+
+
     }
 }

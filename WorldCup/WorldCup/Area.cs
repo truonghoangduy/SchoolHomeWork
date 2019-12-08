@@ -97,6 +97,10 @@ namespace WorldCup
                     return 2;
                     break;
 
+                case Continent.NorthAmericaCentral:
+                    return 3;
+                    break;
+
                 case Continent.SouthAmerica:
                     return 4;
                     break;
